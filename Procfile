@@ -1,1 +1,1 @@
-web: gunicorn findtable:app --log-file=-
+web: gunicorn runp-heroku:app --log-file=-
