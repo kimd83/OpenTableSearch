@@ -1,0 +1,1 @@
+web: gunicorn findtable:app --log-file=-
