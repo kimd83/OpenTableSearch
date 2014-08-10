@@ -1,6 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
+	<link type="text/css" rel="stylesheet" href="/static/main.css"/>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type='text/javascript' src="/static/script.js"></script>
+
 	{% if title %}
 	<title>{{title}}</title>
 	{% else %}
@@ -8,8 +12,17 @@
 	{% endif %}
 </head>
 <body>
-	<div></div>
-		<hr>
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	<ul>
+		{% for message in messages %}
+		<li>{{ message }} </li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	{% endwith %}
+	<div id ="content">
 		{% block content %}{% endblock %}
+	</div>
 </body>
 </html>

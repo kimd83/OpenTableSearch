@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="/index">Home</a>
+<h1>OpenTable Search</h1>
+<form action="" method="post" name="opentable">
+	<SELECT id="rtype" name="rtype">
+	<option SELECTED id="All"> All</option>
+	<option id="American">American</option>
+	<option id="French">French</option>
+	<option id="Italian">Italian</option>	
+	</SELECT>
+
+	<br>
+	<div id="rlist" name="rlist">
+	</div>
+	<br>
+
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script>
+	$(function() {
+		$( "#datepicker" ).datepicker({
+			dateFormat: "mm/dd/yy"
+		}).datepicker("setDate","0");
+	});
+	</script>
+	<div class="options">
+	<input type="text" id="datepicker" name="start_date">
+	<SELECT name="time">
+	<OPTION> 10AM
+	<OPTION> 11AM
+	<OPTION> 12PM
+	<OPTION> 1PM
+	<OPTION> 2PM
+	<OPTION> 3PM
+	<OPTION> 4PM
+	<OPTION> 5PM
+	<OPTION> 6PM
+	<OPTION SELECTED> 7PM
+	<OPTION> 8PM
+	<OPTION> 9PM
+	<OPTION> 10PM
+	<OPTION> 11PM	
+	</SELECT>
+	<SELECT name="people">
+	<OPTION> for 1
+	<OPTION SELECTED>for 2
+	<OPTION>for 3
+	<OPTION>for 4
+	<OPTION>for 5
+	<OPTION>for 6
+	<OPTION>for 7
+	<OPTION>for 8
+	</SELECT>
+	<br>
+	<br>
+	Addtional days to search (0 if only for the date selected)
+	<br>
+	<SELECT name="num_days">
+	<OPTION SELECTED>0 
+	<OPTION>1
+	<OPTION>2
+	<OPTION>3
+	<OPTION>4
+	<OPTION>5
+	<OPTION>6
+	<OPTION>7
+	</SELECT>
+
+	<br>
+    <input type="submit" id="search" name="search" value="search">
+	<br>
+	<br>
+	{{errors}}
+	<br>
+
+	{% if tables %}
+	<br>
+	{% for table in tables %}
+		{{table}}
+		<br>
+		{% for t in tables[table] %}
+		<li>
+			<a href="{{ t.split(" ")[-1] }}">{{ t.split(" ")[:2]}}</a>
+		</li>
+		{% endfor %}
+		<br>
+	{% endfor %}
+	{% endif %}
+	</form>
+
+{% endblock %}
