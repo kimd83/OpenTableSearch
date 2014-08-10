@@ -1,1 +1,1 @@
-web: gunicorn opentable:app --log-file=-
+web: gunicorn run_heroku:app --log-file=-
