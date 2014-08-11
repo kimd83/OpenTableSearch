@@ -2,19 +2,57 @@
 {% block content %}
 <a href="/index">Home</a>
 <h1>OpenTable Search</h1>
-<form action="" method="post" name="opentable">
-	<SELECT id="rtype" name="rtype">
+<br>
+<form action="" method="post" id= "opentable" name="opentable" onsubmit="selectAllOptions();">
+<div>
+	<select multiple size="10" name="from" id="from">
+
+	</select>
+<div class="controls">
+<a href="javascript:moveSelected('to', 'from')">&lt;</a>
+<a href="javascript:moveSelected('from', 'to')">&gt;</a>
+</div>
+	<select multiple size="10" id="to">
+		<option>Eleven Madison Park</option>
+		<option>Daniel</option>
+		<option>Marea</option>
+		<option>Le Bernardin</option>
+		<option>Per Se</option>
+		<option>Jean Georges</option>
+
+
+	</select>
+
+</div>
+
+<script>
+function selectAllOptions(){
+	selectBox = document.getElementById("from");
+	for (var i=0; i < selectBox.options.length; i++)
+	{
+		selectBox.options[i].selected = true;
+	}
+}
+// $(document).ready(function(){
+// 	$('#from option').prop('selected', true);
+// });
+
+</script>
+
+<div id="options">
+
+<!-- 	<SELECT id="rtype" name="rtype">
 	<option SELECTED id="All"> All</option>
 	<option id="American">American</option>
 	<option id="French">French</option>
 	<option id="Italian">Italian</option>	
-	</SELECT>
-
+	</SELECT> -->
+<!-- 
 	<br>
 	<div id="rlist" name="rlist">
 	</div>
 	<br>
-
+ -->
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -70,10 +108,12 @@
 	</SELECT>
 
 	<br>
-    <input type="submit" id="search" name="search" value="search">
+    <input type="submit" id="search" name="search" value="search" onclick="selectAllOptions();">
 	<br>
+</div>
 	<br>
 	{{errors}}
+	{{test}}
 	<br>
 
 	{% if tables %}
