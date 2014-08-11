@@ -1,5 +1,6 @@
 import datetime
 import requests
+import grequests
 from lxml import html
 
 def find_tables(restaurant_id, start_date, time, people, num_days):
@@ -10,8 +11,9 @@ def find_tables(restaurant_id, start_date, time, people, num_days):
 	check_dates = [start_date + datetime.timedelta(i) for i in range(0,int(num_days)+1)]
 	check_dates = ['%s/%s/%s' % (check_date.month, check_date.day, check_date.year) for check_date in check_dates]
 	start_urls = ['http://www.opentable.com/opentables.aspx?t=rest&r={}&m=8&p={}&d={}%20{}&scpref=100'.format(restaurant_id,str(people),date,t) for t in time for date in check_dates]
-	for url in start_urls:
-		page = requests.get(url)
+	rs = (grequests.get(u) for u in start_urls)
+	pages = grequests.map(rs)
+	for page in pages:
 		tree = html.fromstring(page.text)
 		restaurant_exists = tree.xpath('//table[@class="ResultsGrid"]/tr/td/ul/@id')
 		if restaurant_exists == []:
