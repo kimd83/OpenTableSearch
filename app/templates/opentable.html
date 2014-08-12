@@ -128,7 +128,7 @@ function selectAllOptions(){
 		<br>
 		{% for t in tables[table] %}
 		<li>
-			<a href="{{ t.split(" ")[-1] }}">{{ t.split(" ")[:2]}}</a>
+			<a href="{{ t.split(" ")[-1] }}">{{ t.split(" ")[0][:-5] + " " + t.split(" ")[1]}}</a>
 		</li>
 		{% endfor %}
 		<br>
