@@ -27,14 +27,14 @@ def opentable():
 		# return render_template('opentable.html', errors = rtype)
 		tables={}
 		restaurants = []
-		if rtype == "Italian":
-			restaurants = ['Marea']
-		elif rtype == "French":
-			restaurants = ['Daniel']
-		elif rtype == "American":
-			restaurants = ['Eleven Madison Park']
-		elif rtype == "All":
-			restaurants = ['Eleven Madison Park','Marea','Daniel']
+		# if rtype == "Italian":
+		# 	restaurants = ['Marea']
+		# elif rtype == "French":
+		# 	restaurants = ['Daniel']
+		# elif rtype == "American":
+		# 	restaurants = ['Eleven Madison Park']
+		# elif rtype == "All":
+		# 	restaurants = ['Eleven Madison Park','Marea','Daniel']
 		start_date = str(start_date)
 		time = str(time)
 		people	= str(people)[-1]

@@ -6,7 +6,7 @@
 <form action="" method="post" id= "opentable" name="opentable" onsubmit="selectAllOptions();">
 <div>
 	<select multiple size="10" name="from" id="from">
-
+		<option>Marea</option>
 	</select>
 <div class="controls">
 <a href="javascript:moveSelected('to', 'from')">&lt; Add</a>
@@ -15,7 +15,7 @@
 	<select multiple size="10" id="to">
 		<option>Eleven Madison Park</option>
 		<option>Daniel</option>
-		<option>Marea</option>
+
 		<option>Le Bernardin</option>
 		<option>Per Se</option>
 		<option>Jean Georges</option>
@@ -72,20 +72,17 @@ function selectAllOptions(){
 	<div class="options">
 	<input type="text" id="datepicker" name="start_date">
 	<SELECT name="time">
-	<OPTION> 10AM
-	<OPTION> 11AM
 	<OPTION> 12PM
 	<OPTION> 1PM
-	<OPTION> 2PM
-	<OPTION> 3PM
-	<OPTION> 4PM
-	<OPTION> 5PM
 	<OPTION> 6PM
 	<OPTION SELECTED> 7PM
 	<OPTION> 8PM
 	<OPTION> 9PM
 	<OPTION> 10PM
-	<OPTION> 11PM	
+	<OPTION> 11PM
+
+
+
 	</SELECT>
 	<SELECT name="people">
 	<OPTION> for 1
@@ -102,14 +99,14 @@ function selectAllOptions(){
 	Addtional days to search (0 if only for the date selected)
 	<br>
 	<SELECT name="num_days">
-	<OPTION SELECTED>0 
+	<OPTION>0 
 	<OPTION>1
 	<OPTION>2
 	<OPTION>3
 	<OPTION>4
 	<OPTION>5
 	<OPTION>6
-	<OPTION>7
+	<OPTION SELECTED>7
 	<OPTION>8
 	<OPTION>9
 	<OPTION>10
