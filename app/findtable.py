@@ -6,12 +6,7 @@ from lxml import html
 def find_tables(restaurant_id, start_date, time, people, num_days):
 
 	time = [time[:-2] + ":00:00%20" + time[len(time)-2:]]        
-	# if time == "Lunch":
-	# 	time = ["11:00:00%20AM", "1:30:00%20PM"]
-	# if time == "Dinner":
-	# 	time = ["6:00:00%20PM", "8:30:00%20PM"]
-
-
+	
 	result = []
 	start_date = datetime.datetime.strptime(start_date, '%m/%d/%Y')
 	check_dates = [start_date + datetime.timedelta(i) for i in range(0,int(num_days)+1)]
