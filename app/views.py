@@ -38,3 +38,9 @@ def opentable():
 
 	if request.method == 'GET':
 		return render_template("opentable.html")
+
+@app.route('/littlebirdy', methods=['GET', 'POST'])
+def littlebirdy():
+    if request.method == 'GET':
+        return render_template("littlebirdy.html")
+
