@@ -3,13 +3,14 @@ import requests
 import grequests
 from lxml import html
 
-def find_tables(restaurant_id, start_date, time, people, num_days):
+def find_tables(restaurant_id, start_date, end_date, time, people):
 
 	time = [time[:-2] + ":00:00%20" + time[len(time)-2:]]        
 	
 	result = []
 	start_date = datetime.datetime.strptime(start_date, '%m/%d/%Y')
-	check_dates = [start_date + datetime.timedelta(i) for i in range(0,int(num_days)+1)]
+	end_date = datetime.datetime.strptime(end_date, '%m/%d/%Y')
+	check_dates = [start_date + datetime.timedelta(i) for i in range(0,(end_date-start_date).days+1)]
 	check_dates = ['%s/%s/%s' % (check_date.month, check_date.day, check_date.year) for check_date in check_dates]
 	start_urls = ['http://www.opentable.com/opentables.aspx?t=rest&r={}&m=8&p={}&d={}%20{}&scpref=100'.format(restaurant_id,str(people),date,t) for date in check_dates for t in time]
 	rs = (grequests.get(u) for u in start_urls)

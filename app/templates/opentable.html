@@ -1,110 +1,121 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="/index">Home</a>
-<h1>OpenTable Search</h1>
-<br>
-<form action="" method="post" id= "opentable" name="opentable" onsubmit="selectAllOptions();">
-<div>
-	<select multiple size="10" name="from" id="from">
-		<option>Marea</option>
-	</select>
-<div class="controls">
-<a href="javascript:moveSelected('to', 'from')">&lt; Add</a>
-<a href="javascript:moveSelected('from', 'to')">Remove &gt;</a>
+ 
+<div class="container">
+  <a href="/index">Home</a>
+  <div class="row">
+    <h1 class="col-md-12 text-center">OpenTable Search</h1>
+  </div>
+  <form action="" method="post" id= "opentable" name="opentable" onsubmit="selectAllOptions();">
+    <div>
+
+  <div id="options">
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	  <script>
+	  $(function() {
+		$( "#datepicker" ).datepicker({
+			dateFormat: "mm/dd/yy"
+		}).datepicker("setDate","0");
+	  });
+	  </script>
+	  <script>
+	  $(function() {
+		$( "#datepicker2" ).datepicker({
+			dateFormat: "mm/dd/yy"
+		}).datepicker("setDate","0");
+	  });
+	  </script>
+  </div>
+
+  <div class="row">
+    <div class="options">
+      Start Date<br>
+	  <input type="text" id="datepicker" name="start_date">
+    </div>
+
+    <div class="options">
+      End Date<br>
+	  <input type="text" id="datepicker2" name="end_date">
+    </div>
+    <div class="options">
+    	Time<br>
+	  <SELECT name="time">
+	  <OPTION> 12PM
+	  <OPTION> 1PM
+	  <OPTION> 6PM
+	  <OPTION SELECTED> 7PM
+	  <OPTION> 8PM
+	  <OPTION> 9PM
+	  <OPTION> 10PM
+	  <OPTION> 11PM
+	  </SELECT>
+    </div>
+    <div class="options">
+      ppl<br>
+	  <SELECT name="people">
+	  <OPTION> for 1
+	  <OPTION SELECTED>for 2
+	  <OPTION>for 3
+	  <OPTION>for 4
+	  <OPTION>for 5
+	  <OPTION>for 6
+	  <OPTION>for 7
+	  <OPTION>for 8
+	  </SELECT>
+    </div>
+  </div>
+
+  <div>
+    <br>
+      <div class="row">
+        <select multiple="multiple" style="width: 20em;" name="from" id="from">
+		  <option>Marea</option>
+	    </select>
+	  </div>
+  </div>
+  <div class="row">
+    <div class="controls options">
+      <a href="javascript:moveSelected('to', 'from')">&lt; Add</a>
+	</div>
+	<div class="options">
+	  <a href="javascript:moveSelected('from', 'to')">Remove &gt;</a>
+	</div>
+  </div>
+  <div class="row">
+  <input type="submit" id="search" name="search" value="search" onclick="selectAllOptions();">
+  </div>
+
+  <div class="row">
+	<br>
+	<select multiple="multiple" size="10" style="width:20em"; id="to">
+	  <option>Eleven Madison Park</option>
+	  <option>Daniel</option>
+	  <option>Le Bernardin</option>
+	  <option>Per Se</option>
+	  <option>Jean Georges</option>
+	  <option>Betony</option>
+	  <option>The NoMad</option>
+	  <option>Sushi Nakazawa - Sushi Bar</option>
+	  <option>Carbone</option>
+	  <option>Dirty French</option>
+    </select>
+  </div>
 </div>
-	<select multiple size="10" id="to">
-		<option>Eleven Madison Park</option>
-		<option>Daniel</option>
-		<option>Le Bernardin</option>
-		<option>Per Se</option>
-		<option>Jean Georges</option>
-		<option>Betony</option>
-		<option>The NoMad</option>
-		<option>Sushi Nakazawa - Sushi Bar</option>
-		<option>Carbone</option>
-		<option>Dirty French</option>
-
-	</select>
-
-</div>
-
-<script>
-function selectAllOptions(){
+	<br>
+	<script>
+	function selectAllOptions(){
 	selectBox = document.getElementById("from");
 	for (var i=0; i < selectBox.options.length; i++)
 	{
 		selectBox.options[i].selected = true;
 	}
-}
-</script>
-
-<div id="options">
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	<script>
-	$(function() {
-		$( "#datepicker" ).datepicker({
-			dateFormat: "mm/dd/yy"
-		}).datepicker("setDate","0");
-	});
+	}
 	</script>
-	<div class="options">
-	<input type="text" id="datepicker" name="start_date">
-	<SELECT name="time">
-	<OPTION> 12PM
-	<OPTION> 1PM
-	<OPTION> 6PM
-	<OPTION SELECTED> 7PM
-	<OPTION> 8PM
-	<OPTION> 9PM
-	<OPTION> 10PM
-	<OPTION> 11PM
-
-
-
-	</SELECT>
-	<SELECT name="people">
-	<OPTION> for 1
-	<OPTION SELECTED>for 2
-	<OPTION>for 3
-	<OPTION>for 4
-	<OPTION>for 5
-	<OPTION>for 6
-	<OPTION>for 7
-	<OPTION>for 8
-	</SELECT>
-	<br>
-	<br>
-	Addtional days to search (0 if only for the date selected)
-	<br>
-	<SELECT name="num_days">
-	<OPTION>0 
-	<OPTION>1
-	<OPTION>2
-	<OPTION>3
-	<OPTION>4
-	<OPTION>5
-	<OPTION>6
-	<OPTION SELECTED>7
-	<OPTION>8
-	<OPTION>9
-	<OPTION>11
-	<OPTION>12
-	<OPTION>13
-	<OPTION>14
-	<OPTION>15
-	<OPTION>16
-	<OPTION>17
-	<OPTION>18
-	<OPTION>19
-	<OPTION>20
-	</SELECT>
-
-	<br>
-    <input type="submit" id="search" name="search" value="search" onclick="selectAllOptions();">
-	<br>
 </div>
+</div>
+    
 	<br>
 	{{errors}}
 	{{test}}

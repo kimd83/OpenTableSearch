@@ -1,7 +1,22 @@
+.options {
+    display: inline-block;
+}
+
 #datepicker {
 	width:6em;
 }
 
+#datepicker2 {
+    width:6em;
+}
+
+#rest_list {
+    width: 120px;
+
+}
+
+
+/*
 #restaurant_name {
 	width:20em;
 }
@@ -40,3 +55,4 @@ h1, h2, h3 { color: red; }
         margin: 5px;
         width: 60px;
     }
+*/
