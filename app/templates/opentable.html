@@ -1,60 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
  
+<form id = "form-container" class="form-container">
 <div class="container">
   <a href="/index">Home</a>
   <div class="row">
     <h1 class="col-md-12 text-center">OpenTable Search</h1>
   </div>
-  <form action="" method="post" id= "opentable" name="opentable" onsubmit="selectAllOptions();">
-    <div>
-
-  <div id="options">
-	  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	  <script>
-	  $(function() {
-		$( "#datepicker" ).datepicker({
-			dateFormat: "mm/dd/yy"
-		}).datepicker("setDate","0");
-	  });
-	  </script>
-	  <script>
-	  $(function() {
-		$( "#datepicker2" ).datepicker({
-			dateFormat: "mm/dd/yy"
-		}).datepicker("setDate","0");
-	  });
-	  </script>
-  </div>
 
   <div class="row">
     <div class="options">
       Start Date<br>
-	  <input type="text" id="datepicker" name="start_date">
+	  <input type="text" id="start_date" name="start_date">
     </div>
-
     <div class="options">
       End Date<br>
-	  <input type="text" id="datepicker2" name="end_date">
+	  <input type="text" id="end_date" name="end_date">
     </div>
     <div class="options">
-    	Time<br>
-	  <SELECT name="time">
+      Time<br>
+	  <select class="dropdown" id="time">
 	  <OPTION> 12PM
 	  <OPTION> 1PM
+      <OPTION> 2PM
+      <OPTION> 3PM
+      <OPTION> 4PM
+      <OPTION> 5PM
 	  <OPTION> 6PM
 	  <OPTION SELECTED> 7PM
 	  <OPTION> 8PM
 	  <OPTION> 9PM
 	  <OPTION> 10PM
 	  <OPTION> 11PM
-	  </SELECT>
+	  </select>
     </div>
     <div class="options">
       ppl<br>
-	  <SELECT name="people">
+	  <select class="dropdown" id="people">
 	  <OPTION> for 1
 	  <OPTION SELECTED>for 2
 	  <OPTION>for 3
@@ -63,60 +45,28 @@
 	  <OPTION>for 6
 	  <OPTION>for 7
 	  <OPTION>for 8
-	  </SELECT>
+	  </select>
     </div>
   </div>
-
-  <div>
-    <br>
-      <div class="row">
-        <select multiple="multiple" style="width: 20em;" name="from" id="from">
-		  <option>Marea</option>
-	    </select>
-	  </div>
-  </div>
+  <br>
+  <br>
   <div class="row">
-    <div class="controls options">
-      <a href="javascript:moveSelected('to', 'from')">&lt; Add</a>
-	</div>
-	<div class="options">
-	  <a href="javascript:moveSelected('from', 'to')">Remove &gt;</a>
-	</div>
-  </div>
-  <div class="row">
-  <input type="submit" id="search" name="search" value="search" onclick="selectAllOptions();">
-  </div>
-
-  <div class="row">
-	<br>
-	<select multiple="multiple" size="10" style="width:20em"; id="to">
-	  <option>Eleven Madison Park</option>
-	  <option>Daniel</option>
-	  <option>Le Bernardin</option>
-	  <option>Per Se</option>
-	  <option>Jean Georges</option>
-	  <option>Betony</option>
-	  <option>The NoMad</option>
-	  <option>Sushi Nakazawa - Sushi Bar</option>
-	  <option>Carbone</option>
-	  <option>Dirty French</option>
+    <select id="restaurants" name="restaurants" multiple="multiple">
+        <option selected="selected">Marea</option>
+        <option>Per Se</option>
+        <option>Le Bernardin</option>
+        <option>Eleven Madison Park</option>
+        <option>Jean Georges</option>
+        <option>Daniel</option>
     </select>
   </div>
-</div>
-	<br>
-	<script>
-	function selectAllOptions(){
-	selectBox = document.getElementById("from");
-	for (var i=0; i < selectBox.options.length; i++)
-	{
-		selectBox.options[i].selected = true;
-	}
-	}
-	</script>
-</div>
-</div>
+  <div class="row">
+  <button id="submit-btn">Submit</button>
+  </div>
+</form>
+<ul id="tables">Test</ul>
+
     
-	<br>
 	{{errors}}
 	{{test}}
 	<br>
@@ -134,6 +84,10 @@
 		<br>
 	{% endfor %}
 	{% endif %}
-	</form>
 
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="./static/js/script.js"></script>
+    <script src="./static/js/jquery-picklist/jquery.ui.widget.js"></script>
+    <script src="./static/js/jquery-picklist/jquery-picklist.js"></script>
 {% endblock %}

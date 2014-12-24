@@ -2,57 +2,21 @@
     display: inline-block;
 }
 
-#datepicker {
+#start_date, #end_date {
 	width:6em;
 }
 
-#datepicker2 {
-    width:6em;
+.dropdown {
+    -webkit-appearance: menulist-button;
+    height: 25px;
 }
 
-#rest_list {
-    width: 120px;
+body { margin: 0.5em; }
 
-}
-
-
-/*
-#restaurant_name {
-	width:20em;
-}
-
-.error {
-	color: red;
-}
-
-h1, h2, h3 { color: red; }
-
-#from, #to {
-	width: 200px;
-	display: inline-block;
-}
-
-.controls {
-	width: 100px;
-	display: inline-block;
-	margin: 10px;
-}
-
-#options {
-	display: block;
-}
-
- .controls a {
-        background-color: #222222;
-        border-radius: 4px;
-        border: 2px solid #000;
-        color: #ffffff;
-        padding: 2px;
-        font-size: 14px;
-        text-decoration: none;
-        display: inline-block;
-        text-align: center;
-        margin: 5px;
-        width: 60px;
-    }
-*/
+.pickList_sourceListContainer, .pickList_controlsContainer, .pickList_targetListContainer { float: left; margin: 0.25em; }
+.pickList_controlsContainer { text-align: center; margin-top:30px;}
+.pickList_controlsContainer button { display: block; width: 100%; text-align: center; }
+.pickList_list { list-style-type: none; margin: 0; padding: 0; float: left; width: 150px; height: 150px; border: 1px inset #eee; overflow-y: auto; cursor: default; }
+.pickList_selectedListItem { background-color: #a3c8f5; }
+.pickList_listLabel { font-size: 0.9em; font-weight: bold; text-align: center; }
+.pickList_clear { clear: both; }
