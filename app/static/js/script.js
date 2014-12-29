@@ -105,10 +105,12 @@ function loadData(){
 
 $(document).ajaxStart(function(){
   $("#loading").show();
+  $("#result").hide();
 });
 
 $(document).ajaxStop(function(){
   $("#loading").hide();
+  $("#result").show();
 });
 
 $('#form-container').submit(loadData);
