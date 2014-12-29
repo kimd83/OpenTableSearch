@@ -1,93 +1,84 @@
 {% extends "base.html" %}
 {% block content %}
- 
-<form id = "form-container" class="form-container">
-<div class="container">
-  <a href="/index">Home</a>
+<a href="/index">Home</a> 
+<div class="container-fluid">
   <div class="row">
     <h1 class="col-md-12 text-center">OpenTable Search</h1>
   </div>
-
   <div class="row">
-    <div class="options">
-      Start Date<br>
-	  <input type="text" id="start_date" name="start_date">
+    <div id="leftside" class="col-md-6">
+      <div class="row">
+        <div class="options" class="col-md-3">
+          Start Date<br>
+	        <input type="text" id="start_date" name="start_date">
+        </div>
+        <div class="options" class="col-md-3">
+          End Date<br>
+	        <input type="text" id="end_date" name="end_date">
+        </div>
+        <div class="options" class="col-md-3">
+          Time<br>
+	        <select class="dropdown" id="time">
+	          <OPTION> 12PM
+	          <OPTION> 1PM
+            <OPTION> 2PM
+            <OPTION> 3PM
+            <OPTION> 4PM
+            <OPTION> 5PM
+	          <OPTION> 6PM
+	          <OPTION SELECTED> 7PM
+	          <OPTION> 8PM
+	          <OPTION> 9PM
+	          <OPTION> 10PM
+	          <OPTION> 11PM
+	        </select>
+        </div>
+        <div class="options" class="col-md-3">
+          ppl<br>
+	        <select class="dropdown" id="people">
+	          <OPTION> for 1
+	          <OPTION SELECTED>for 2
+	          <OPTION>for 3
+	          <OPTION>for 4
+	          <OPTION>for 5
+	          <OPTION>for 6
+	          <OPTION>for 7
+	          <OPTION>for 8
+	        </select>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <select id="restaurants" name="restaurants" multiple="multiple">
+            <option value="Marea">Marea</option>
+            <option value="Per Se">Per Se</option>
+            <option value="Le Bernardin">Le Bernardin</option>
+            <option value="Eleven Madison Park">Eleven Madison Park</option>
+            <option value="Jean Georges">Jean Georges</option>
+            <option value="Daniel">Daniel</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"> 
+          <form id = "form-container" class="form-container">
+            <button id="submit-btn">Search</button>
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="options">
-      End Date<br>
-	  <input type="text" id="end_date" name="end_date">
-    </div>
-    <div class="options">
-      Time<br>
-	  <select class="dropdown" id="time">
-	  <OPTION> 12PM
-	  <OPTION> 1PM
-      <OPTION> 2PM
-      <OPTION> 3PM
-      <OPTION> 4PM
-      <OPTION> 5PM
-	  <OPTION> 6PM
-	  <OPTION SELECTED> 7PM
-	  <OPTION> 8PM
-	  <OPTION> 9PM
-	  <OPTION> 10PM
-	  <OPTION> 11PM
-	  </select>
-    </div>
-    <div class="options">
-      ppl<br>
-	  <select class="dropdown" id="people">
-	  <OPTION> for 1
-	  <OPTION SELECTED>for 2
-	  <OPTION>for 3
-	  <OPTION>for 4
-	  <OPTION>for 5
-	  <OPTION>for 6
-	  <OPTION>for 7
-	  <OPTION>for 8
-	  </select>
+    <div id="rightside" class="col-md-6">
+      <div class="row">
+        <h4>Search Result</h4>
+        <ul id="tables"></ul>
+      </div>
     </div>
   </div>
-  <br>
-  <br>
-  <div class="row">
-    <select id="restaurants" name="restaurants" multiple="multiple">
-        <option selected="selected">Marea</option>
-        <option>Per Se</option>
-        <option>Le Bernardin</option>
-        <option>Eleven Madison Park</option>
-        <option>Jean Georges</option>
-        <option>Daniel</option>
-    </select>
-  </div>
-  <div class="row">
-  <button id="submit-btn">Submit</button>
-  </div>
-</form>
-<ul id="tables">Test</ul>
-
-    
-	{{errors}}
-	{{test}}
-	<br>
-
-	{% if tables %}
-	<br>
-	{% for table in tables %}
-		{{table}}
-		<br>
-		{% for t in tables[table] %}
-		<li>
-			<a href="{{ t.split(" ")[-1] }}">{{ t.split(" ")[0][:-5] + " " + t.split(" ")[1]}}</a>
-		</li>
-		{% endfor %}
-		<br>
-	{% endfor %}
-	{% endif %}
-
+</div>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <script src="./static/js/script.js"></script>
     <script src="./static/js/jquery-picklist/jquery.ui.widget.js"></script>
-    <script src="./static/js/jquery-picklist/jquery-picklist.js"></script>
+    <script src="./static/js/jquery-picklist/jquery-picklist.js"></script>    
+    <script src="./static/js/script.js"></script>
 {% endblock %}

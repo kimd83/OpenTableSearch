@@ -1,15 +1,23 @@
 .options {
-    display: inline-block;
+    float: left;
+    margin: 0.30em;
 }
 
 #start_date, #end_date {
-	width:6em;
+	width: 6em;
+    height: 30px;
 }
 
 .dropdown {
     -webkit-appearance: menulist-button;
-    height: 25px;
+    height: 30px;
 }
+
+#rightside {
+    background-color: AliceBlue;
+
+}
+
 
 body { margin: 0.5em; }
 
