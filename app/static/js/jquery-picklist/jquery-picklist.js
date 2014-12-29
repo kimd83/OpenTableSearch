@@ -37,10 +37,10 @@
 			removeClass:                "pickList_remove",
 
 			// Control labels
-			addAllLabel:                "&lt;&lt;",
-			addLabel:                   "&lt;",
-			removeAllLabel:             "&gt;&gt;",
-			removeLabel:                "&gt;",
+			addAllLabel:                "&gt;&gt;",
+			addLabel:                   "&gt;",
+			removeAllLabel:             "&lt;&lt;",
+			removeLabel:                "&lt;",
 
 			// List labels
 			listLabelClass:             "pickList_listLabel",
@@ -78,9 +78,9 @@
 					.hide()
 					.addClass(self.options.mainClass)
 					.insertAfter(self.element)
-					.append(self._buildTargetList())
-					.append(self._buildControls())
 					.append(self._buildSourceList())
+					.append(self._buildControls())
+					.append(self._buildTargetList())					
 					.append( $("<div/>").addClass(self.options.clearClass) );
 
 			self._populateLists();
