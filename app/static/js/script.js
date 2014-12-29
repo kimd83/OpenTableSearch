@@ -87,20 +87,29 @@ function loadData(){
           var result = $.parseJSON(result);
           $("#tables").empty();
           for(var key in result){
-            $("#tables").append('<br><b>' + key + '</b><br>');
+            $("#tables").append('<b>' + key + '</b><br>');
             if(result[key].length<1){
-              $("#tables").append('<li>No Available Tables</li>');
+              $("#tables").append('<li>No Tables Available</li>');
             }
             else{
             for(var i=0;i<result[key].length;i++){
                 $("#tables").append('<li><a href='+ result[key][i].split(" ")[2] + ">" + result[key][i].split(" ")[0] + " " + result[key][i].split(" ")[1] + '</a></li>');
             }
           }
+          $("#tables").append('<br>');
         }
         }
     });
     return false;
 };
+
+$(document).ajaxStart(function(){
+  $("#loading").show();
+});
+
+$(document).ajaxStop(function(){
+  $("#loading").hide();
+});
 
 $('#form-container').submit(loadData);
 
