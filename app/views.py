@@ -13,11 +13,6 @@ list_all = ["' La Cerveceria^51568","1 Darbar^6075","1 Nocello^26446","1 North S
 for r in list_all:
     id_all[r.split("^")[0]] = int(r.split("^")[1])
 
-# @app.route('/')
-# @app.route('/index')
-# def index():
-#     return render_template("index.html")
-
 @app.route("/crossdomain")
 def crossdom():
     reply = proxypy.get(request.query_string)
@@ -50,7 +45,7 @@ def opentable():
     if request.method == 'GET':
         return render_template("opentable.html")
 
-@app.route('/help', methods=['GET', 'POST'])
+@app.route('/help', methods=['GET'])
 def help():
     if request.method == 'GET':
         return render_template("help.html")
