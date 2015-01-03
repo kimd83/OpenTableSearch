@@ -10,7 +10,8 @@ import grequests
 def get(qstring):
 
     id_all = {"Marea": 31159, "Per Se": 2783, "Jean Georges": 3154, 
-    "Le Bernardin": 2508, "Daniel": 337, "Eleven Madison Park": 211}
+    "Le Bernardin": 2508, "Daniel": 337, "Eleven Madison Park": 211,
+    "Dirty French": 151027, "Marta":151072}
 
     data = ast.literal_eval(qstring.replace('%22','"').replace('%20',' '))
     tables = {}
@@ -49,6 +50,6 @@ def find_tables(rname, rid, start_date, end_date, time, people):
             table_time = table.split(' ')[1]
             table_link = 'http://www.opentable.com/{}?DateTime={}%20{}00&Covers={}&OnlyOffers=false&RestaurantIDs={}'.format(rname,table_day, table_time,str(people),rid) 
             table_day = datetime.datetime.strptime(table_day, "%Y-%m-%d").strftime("%m/%d")+" "+dayofweek[datetime.datetime.strptime(table_day, "%Y-%m-%d").weekday()]
-            table_time = str(int(table_time.split(':')[0])-12 * (table_time.split(':')[0]>12))+":"+table_time.split(':')[1]+"PM"
+            table_time = str(int(table_time.split(':')[0])- (12 * (int(table_time.split(':')[0])>12)))+":"+table_time.split(':')[1]+"PM"
             result.append(table_link + "," + table_day + " " + table_time)
     return result
