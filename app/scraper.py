@@ -11,7 +11,7 @@ def get(qstring):
 
     id_all = {"Marea": 31159, "Per Se": 2783, "Jean Georges": 3154, 
     "Le Bernardin": 2508, "Daniel": 337, "Eleven Madison Park": 211,
-    "Dirty French": 151027, "Marta":151072}
+    "Dirty French": 151027}
 
     data = ast.literal_eval(qstring.replace('%22','"').replace('%20',' '))
     tables = {}
