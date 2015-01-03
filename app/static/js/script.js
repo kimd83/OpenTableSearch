@@ -5,18 +5,6 @@ $(function(){
 });
 
 $(function(){
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth() + 1;
-  var yyyy = today.getFullYear();
-
-  if(dd<10){
-    dd = '0'+dd;
-  }
-  if(mm<10){
-    mm = '0'+mm;
-  }
-  today_string = mm + '/'+dd+'/'+yyyy;
 
   if(localStorage.getItem("time") != null){
     $("#time").val(localStorage.getItem('time'));
@@ -24,6 +12,23 @@ $(function(){
   if(localStorage.getItem("people") != null){
     $("#people").val(localStorage.getItem('people'));
   };
+
+  function date_to_string(date){
+    var dd = date.getDate()
+    var mm = date.getMonth() + 1;
+    var yyyy = date.getFullYear();
+  
+    if(dd<10){
+      dd = '0'+dd;
+    }
+    if(mm<10){
+      mm = '0'+mm;
+    }
+    return mm + '/' + dd + '/' + yyyy;
+  }
+
+  var today = new Date();
+  var today_string = date_to_string(today);
   
   if(localStorage.getItem("start_date") != null){
     $("#start_date").val(localStorage.getItem('start_date'));
@@ -32,11 +37,14 @@ $(function(){
     $("#start_date").val(today_string);
   };
 
+  var tmr = new Date(today.setDate(today.getDate()+1));
+  var tmr_string = date_to_string(tmr);
+
   if(localStorage.getItem("end_date") != null){
     $("#end_date").val(localStorage.getItem('end_date'));
   };
   if(new Date(localStorage.getItem("end_date")) < today){
-    $("#end_date").val(today_string);
+    $("#end_date").val(tmr_string);
   };
 
   if(localStorage.getItem('selected') != null){

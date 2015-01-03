@@ -41,18 +41,14 @@ def find_tables(rname, rid, start_date, end_date, time, people):
     pages = grequests.map(rs)
     for page in pages:
         tree = html.fromstring(page.text)
-        restaurant_exists = tree.xpath('//ul[@class="dtp-results-times list-left"]/li/a/@data-datetime')
-        if restaurant_exists == []:
+        tables = tree.xpath('//ul[@class="dtp-results-times list-left"]/li/a/@data-datetime')
+        if tables == []:
             continue
-        times = tree.xpath('//ul[@class="dtp-results-times list-left"]/li/a/@data-datetime')
-        if times == []:
-            continue
-        for info in times:
-            table_day = info.split(' ')[0]
-            table_time = info.split(' ')[1]
+        for table in tables:
+            table_day = table.split(' ')[0]
+            table_time = table.split(' ')[1]
             table_link = 'http://www.opentable.com/{}?DateTime={}%20{}00&Covers={}&OnlyOffers=false&RestaurantIDs={}'.format(rname,table_day, table_time,str(people),rid) 
             table_day = datetime.datetime.strptime(table_day, "%Y-%m-%d").strftime("%m/%d")+" "+dayofweek[datetime.datetime.strptime(table_day, "%Y-%m-%d").weekday()]
             table_time = str(int(table_time.split(':')[0])-12 * (table_time.split(':')[0]>12))+":"+table_time.split(':')[1]+"PM"
-            print table_time
             result.append(table_link + "," + table_day + " " + table_time)
     return result
