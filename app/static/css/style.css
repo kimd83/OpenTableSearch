@@ -14,7 +14,7 @@
 }
 
 #rightside {
-    background-color: AliceBlue;
+    background-color: #f7f7f7;
 
 }
 
@@ -31,7 +31,11 @@
 
 
 }
+.loading {
+    
 
+
+}
 body { margin: 0.5em; }
 
 .pickList_sourceListContainer, .pickList_controlsContainer, .pickList_targetListContainer { float: left; margin: 0.10em; }
