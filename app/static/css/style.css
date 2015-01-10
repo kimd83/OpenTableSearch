@@ -1,18 +1,30 @@
 
 .options {
     float: left;
+    /*font-size: 1rem;*/
 }
 
 #start_date, #end_date {
-	width: 6.5em;
+	width: 6em;
     height: 30px;
+    margin-right: 0.5em;
+}
+
+#start_time, #end_time, #people {
+    width: 5em;
+    margin-right: 0.5em;
 }
 
 .dropdown {
     -webkit-appearance: menulist-button;
     height: 30px;
+    width: 4.5em;
 }
-
+.r_dropdown {
+    -webkit-appearance: menulist-button;
+    height: 30px;
+    width: 10em;
+}
 #rightside {
     background-color: #f7f7f7;
 
@@ -28,20 +40,14 @@
     background-color: #da3743;
     color: #fff;
     font-size: 1rem;
-
-
 }
-.loading {
-    
 
-
-}
 body { margin: 0.5em; }
 
 .pickList_sourceListContainer, .pickList_controlsContainer, .pickList_targetListContainer { float: left; margin: 0.10em; }
 .pickList_controlsContainer { text-align: center; margin-top:30px;}
 .pickList_controlsContainer button { display: block; width: 100%; text-align: center; }
-.pickList_list { list-style-type: none; margin: 0; padding: 0; float: left; width: 135px; height: 150px; border: 1px inset #eee; overflow-y: auto; overflow-x: scroll cursor: default; }
+.pickList_list { list-style-type: none; margin: 0; padding: 0; float: left; width: 183px; height: 150px; border: 1px inset #eee; overflow-y: auto; overflow-x: scroll cursor: default; }
 .pickList_selectedListItem { background-color: #a3c8f5; }
 .pickList_listLabel { font-size: 0.9em; font-weight: bold; text-align: center; }
 .pickList_clear { clear: both; }
