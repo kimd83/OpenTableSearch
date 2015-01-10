@@ -1,4 +1,4 @@
-deployed at <a href=kimd83.herokuapp.com/opentable>kimd83.herokuapp.com/opentable</a>
+deployed at <a href=http://kimd83.herokuapp.com/opentable>kimd83.herokuapp.com/opentable</a>
 
 <b>Advanced OpenTable Search</b>
 
