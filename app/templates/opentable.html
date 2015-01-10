@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="/help">Help</a> 
+<a href="/help">Help</a><br>
+<a href="/alerts"> Sign up for an alert</a>
 <div class="container-fluid">
   <div class="row">
     <h1 class="col-md-12 text-center">OpenTable Search</h1>
@@ -17,9 +18,9 @@
           End Date<br>
 	        <input type="text" id="end_date" name="end_date" readonly>
         </div>
-        <div class="options" class="col-md-3">
-          Time<br>
-	        <select class="dropdown" id="time">
+        <div class="options" class="col-md-2">
+          Start Time<br>
+	        <select class="dropdown" id="start_time">
 	          <OPTION> 12PM
 	          <OPTION> 1PM
             <OPTION> 2PM
@@ -34,8 +35,25 @@
 	          <OPTION> 11PM
 	        </select>
         </div>
-        <div class="options" class="col-md-3">
-          ppl<br>
+        <div class="options" class="col-md-2">
+          End Time<br>
+          <select class="dropdown" id="end_time">
+            <OPTION> 12PM
+            <OPTION> 1PM
+            <OPTION> 2PM
+            <OPTION> 3PM
+            <OPTION> 4PM
+            <OPTION> 5PM
+            <OPTION> 6PM
+            <OPTION> 7PM
+            <OPTION> 8PM
+            <OPTION SELECTED> 9PM
+            <OPTION> 10PM
+            <OPTION> 11PM
+          </select>
+        </div>
+        <div class="options" class="col-md-2">
+          Ppl<br>
 	        <select class="dropdown" id="people">
 	          <OPTION> for 1
 	          <OPTION SELECTED>for 2
@@ -56,12 +74,10 @@
             <option value="Marea">Marea</option>
             <option value="Per Se">Per Se</option>
             <option value="Le Bernardin">Le Bernardin</option>
-            <option value="Eleven Madison Park">Eleven Madison Park</option>
+            <!-- <option value="Eleven Madison Park">Eleven Madison Park</option> -->
             <option value="Jean Georges">Jean Georges</option>
             <option value="Daniel">Daniel</option>
             <option value="Dirty French">Dirty French</option>
-            <option value="Marta">Marta</option>
-            
           </select>
         </div>
       </div>
