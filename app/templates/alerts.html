@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <a class="menu" href="/help">Help</a><br>
-<a class="menu" href="opentable">Main</a><br><br>
+<a class="menu" href="/opentable">Main</a><br><br>
 <form method=post id = "form-container" class="form-container">
 <div class="container-fluid">
   <div class="row">
@@ -90,9 +90,12 @@
     </div>
   </div>
   <br>
+  <span id="confirmation"><b>
   {{confirmation}}
   <br>
   {{table}}
+  </b>
+  </span>
 </div>
 </form>
 
