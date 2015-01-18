@@ -30,8 +30,11 @@ def alerts():
         return render_template("alerts.html")
     if request.method == 'POST':
         email = request.form['email']
-        if valid_email(email):
+        try:
             rname = request.form['rname']
+        except:
+            rname = ""
+        if valid_email(email) & bool(rname):
             start_date = request.form['start_date']
             end_date = request.form['end_date']
             start_time = request.form['start_time']
@@ -42,7 +45,8 @@ def alerts():
             table = "Your Table: " + rname + " from " + start_date + " to " + end_date + " between " + start_time + " and " + end_time + " " + people
             return render_template("alerts.html", confirmation = confirmation, table = table)
         else:
-            return render_template("alerts.html", confirmation = "Please enter a valid email address")
+            error = "Please pick a restaurant and/or enter a valid email address"
+        return render_template("alerts.html", confirmation = error)
 
 @app.route('/alerts_active')
 def alerts_active():
