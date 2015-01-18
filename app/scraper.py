@@ -14,7 +14,7 @@ dayofweek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 id_all = {"Marea": 31159, "Per Se": 2783, "Jean Georges": 3154, 
     "Le Bernardin": 2508, "Daniel": 337, "Eleven Madison Park": 211,
     "Gramercy Tavern": 942, "Sushi Nakazawa-Sushi Bar": 118903, "Betony": 78406,
-    "Carbone": 104293}
+    "Carbone": 104293, "Dirty French": 151027}
 
 def get(qstring):
     data = ast.literal_eval(qstring.replace('%22','"').replace('%20',' '))
