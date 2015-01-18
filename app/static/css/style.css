@@ -24,15 +24,16 @@ h1 {
 #start_date, #end_date {
 	width: 6em;
     height: 30px;
-    border-radius: 3px;
 }
 
 #start_date_option {
-    border-radius: 5px  0   0   5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 #people_option {
-    border-radius: 0  5px   5px   0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 
@@ -57,9 +58,7 @@ h1 {
 
 #result, #loading, #result {
     display: inline-block;
-
     width: 40rem;
-    /*padding-top: 0;*/
     background-color: #fff;
     border-radius: 5px;
 
@@ -88,7 +87,9 @@ input {
 }
 
 .pickList_list {
-    border-radius: 0    0   5px 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
 }
 
 .pickList_sourceListContainer, .pickList_controlsContainer, .pickList_targetListContainer { float: left; margin: 0.10em; }
@@ -98,3 +99,29 @@ input {
 .pickList_selectedListItem { background-color: #a3c8f5; }
 .pickList_listLabel { font-size: 0.9em; font-weight: bold; text-align: center; }
 .pickList_clear { clear: both; }
+
+
+@media only screen and (max-device-width: 480px) {
+    .pickList_list { list-style-type: none; margin: 0; padding: 0; float: left; width: 120px; height: 150px; border: 1px inset #eee; overflow-y: auto; overflow-x: scroll cursor: default; }
+    
+    #start_time {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    #end_time {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+
+    }
+    #result, #loading, #result {
+    display: inline-block;
+    width: 28rem;
+    background-color: #fff;
+    border-radius: 5px;
+
+}
+}
+
+
+
+
