@@ -13,7 +13,8 @@ from email.mime.text import MIMEText
 dayofweek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 id_all = {"Marea": 31159, "Per Se": 2783, "Jean Georges": 3154, 
     "Le Bernardin": 2508, "Daniel": 337, "Eleven Madison Park": 211,
-    "Betony": 7840}
+    "Gramercy Tavern": 942, "Sushi Nakazawa-Sushi Bar": 118903, "Betony": 78406,
+    "Carbone": 104293}
 
 def get(qstring):
     data = ast.literal_eval(qstring.replace('%22','"').replace('%20',' '))
