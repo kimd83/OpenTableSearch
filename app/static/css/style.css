@@ -15,6 +15,10 @@ h1 {
     color: #fff;
 }
 
+#confirmation {
+    color: red;
+}
+
 .options {
     background-color: #fff;
     float: left;
@@ -101,27 +105,38 @@ input {
 .pickList_clear { clear: both; }
 
 
-@media only screen and (max-device-width: 480px) {
-    .pickList_list { list-style-type: none; margin: 0; padding: 0; float: left; width: 120px; height: 150px; border: 1px inset #eee; overflow-y: auto; overflow-x: scroll cursor: default; }
+@media only screen and (max-device-width: 480px) and (min-device-width: 350px) {
+    .pickList_list { list-style-type: none; margin: 0; padding: 0; float: left; width: 130px; height: 150px; border: 1px inset #eee; overflow-y: auto; overflow-x: scroll cursor: default; }
     
-    #start_time {
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
+    #result, #loading, #result {
+    display: inline-block;
+    width: 32rem;
+    background-color: #fff;
+    border-radius: 5px;    
     }
-    #end_time {
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
 
+    .options{
+        font-size: 11px;
     }
+
+    .dropdown {
+    -webkit-appearance: menulist-button;
+    height: 30px;
+    width: 4em;
+}
+
+@media only screen and (max-device-width: 350px) {
+    .pickList_list { list-style-type: none; margin: 0; padding: 0; float: left; width: 123px; height: 150px; border: 1px inset #eee; overflow-y: auto; overflow-x: scroll cursor: default; }
+    
     #result, #loading, #result {
     display: inline-block;
     width: 28rem;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 5px;    
+    }
 
+    .options{
+        font-size: 10px;
+    }
 }
-}
-
-
-
 

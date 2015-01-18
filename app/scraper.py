@@ -13,7 +13,7 @@ from email.mime.text import MIMEText
 dayofweek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 id_all = {"Marea": 31159, "Per Se": 2783, "Jean Georges": 3154, 
     "Le Bernardin": 2508, "Daniel": 337, "Eleven Madison Park": 211,
-    "Dirty French": 151027}
+    "Betony": 7840}
 
 def get(qstring):
     data = ast.literal_eval(qstring.replace('%22','"').replace('%20',' '))
@@ -54,10 +54,7 @@ def find_tables(rname, rid, start_date, end_date, start_time, end_time, people):
         for table in tables:
             table_day = table.split(' ')[0]
             table_time = table.split(' ')[1]
-            print table_time
-            print start_time
-            print end_time
-            #exclude tables outside of (start_time, end_time)
+             #exclude tables outside of (start_time, end_time)
             if int(table_time.split(':')[0]) < int(start_time[:-2])+ 12:
                 continue
             if int(table_time.split(':')[0]) > int(end_time[:-2]) + 12:
