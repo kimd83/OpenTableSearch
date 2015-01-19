@@ -7,17 +7,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1 {
-    color: #fff;
-}
+h1 { color: #fff; }
 
-.menu {
-    color: #fff;
-}
+.menu { color: #fff; }
 
-#confirmation {
-    color: #ff0000;
-}
+#confirmation { color: #ff0000; }
 
 .options {
     background-color: #fff;
@@ -40,14 +34,9 @@ h1 {
     border-bottom-right-radius: 5px;
 }
 
+#start_time, #end_time { width: 6em; }
 
-#start_time, #end_time {
-    width: 6em;
-}
-
-#people {
-    width: 5em;
-}
+#people { width: 5em; }
 
 .dropdown {
     -webkit-appearance: menulist-button;
@@ -65,7 +54,6 @@ h1 {
     width: 40rem;
     background-color: #fff;
     border-radius: 5px;
-
 }
 
 #submit-btn {
@@ -81,9 +69,7 @@ h1 {
     font-size: 1.3rem;
 }
 
-input {
-    border-radius: 5px;
-}
+input { border-radius: 5px; }
 
 .pickList_listContainer {
     border-radius: 5px;
@@ -93,7 +79,6 @@ input {
 .pickList_list {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-
 }
 
 .pickList_sourceListContainer, .pickList_controlsContainer, .pickList_targetListContainer { float: left; margin: 0.10em; }
@@ -104,39 +89,14 @@ input {
 .pickList_listLabel { font-size: 0.9em; font-weight: bold; text-align: center; }
 .pickList_clear { clear: both; }
 
-
-@media only screen and (max-device-width: 480px) and (min-device-width: 350px) {
-    .pickList_list { list-style-type: none; margin: 0; padding: 0; float: left; width: 130px; height: 150px; border: 1px inset #eee; overflow-y: auto; overflow-x: scroll cursor: default; }
-    
-    #result, #loading, #result {
-    display: inline-block;
-    width: 32rem;
-    background-color: #fff;
-    border-radius: 5px;    
-    }
-
-    .options{
-        font-size: 11px;
-    }
-
-    .dropdown {
-    -webkit-appearance: menulist-button;
-    height: 30px;
-    width: 4em;
+@media only screen and (max-width : 480px) {
+    .pickList_list { width: 140px;}
+    #result, #loading { width: 32rem;}
+    .options { font-size: 11px;}
 }
 
-@media only screen and (max-device-width: 350px) {
-    .pickList_list { list-style-type: none; margin: 0; padding: 0; float: left; width: 123px; height: 150px; border: 1px inset #eee; overflow-y: auto; overflow-x: scroll cursor: default; }
-    
-    #result, #loading, #result {
-    display: inline-block;
-    width: 28rem;
-    background-color: #fff;
-    border-radius: 5px;    
-    }
-
-    .options{
-        font-size: 10px;
-    }
+@media only screen and (max-width: 350px) {
+    .pickList_list { width: 120px;}
+    #result, #loading { width: 30rem;}
+    .options { font-size: 10px;}
 }
-
