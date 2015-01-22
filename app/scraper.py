@@ -14,7 +14,7 @@ dayofweek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 id_all = {"Marea": 31159, "Per Se": 2783, "Jean Georges": 3154, 
     "Le Bernardin": 2508, "Daniel": 337, "Eleven Madison Park": 211,
     "Gramercy Tavern": 942, "Sushi Nakazawa-Sushi Bar": 118903, "Betony": 78406,
-    "Carbone": 104293, "Dirty French": 151027}
+    "Carbone": 104293, "Dirty French": 151027, "Upland":151747}
 
 def get(qstring):
     data = ast.literal_eval(qstring.replace('%22','"').replace('%20',' '))
@@ -31,6 +31,7 @@ def get(qstring):
     return json.dumps(tables)
 
 def find_tables(rname, rid, start_date, end_date, start_time, end_time, people):
+    print end_time
     people = str(people)[-1]    
     if start_time == "12PM":
         start_time = "0PM"
@@ -38,6 +39,7 @@ def find_tables(rname, rid, start_date, end_date, start_time, end_time, people):
         end_time = "0PM"
     times = range(int(start_time[:-2]), int(end_time[:-2]))
     times = [str(time + 12) + "%3A30" for time in times]
+    print times
     rname = rname.replace(" ","-")
     start_date = datetime.strptime(start_date, '%m/%d/%Y')
     end_date = datetime.strptime(end_date, '%m/%d/%Y')
@@ -55,12 +57,16 @@ def find_tables(rname, rid, start_date, end_date, start_time, end_time, people):
         for table in tables:
             table_day = table.split(' ')[0]
             table_time = table.split(' ')[1]
+            print table_time
              #exclude tables outside of (start_time, end_time)
-            if int(table_time.split(':')[0]) < int(start_time[:-2])+ 12:
+            if int(table_time.split(':')[0]) < int(start_time[:-2]) + 12:
                 continue
             if int(table_time.split(':')[0]) > int(end_time[:-2]) + 12:
+                continue
+            if int(table_time.split(':')[0]) == int(end_time[:-2]) + 12:
                 if table_time.split(':')[1] != '00':
                     continue
+
             table_link = 'http://www.opentable.com/{}?DateTime={}%20{}00&Covers={}&OnlyOffers=false&RestaurantIDs={}'.format(rname,table_day, table_time,str(people),rid) 
             table_day = datetime.strptime(table_day, "%Y-%m-%d").strftime("%m/%d")+" "+dayofweek[datetime.strptime(table_day, "%Y-%m-%d").weekday()]
             table_time = str(int(table_time.split(':')[0])- (12 * (int(table_time.split(':')[0])>12)))+":"+table_time.split(':')[1]+"PM"

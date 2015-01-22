@@ -5,6 +5,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
   -webkit-font-smoothing: antialiased;
+  height: 100%;
 }
 
 h1 { color: #fff; }
@@ -96,7 +97,7 @@ input { border-radius: 5px; }
 }
 
 @media only screen and (max-width: 350px) {
-    .pickList_list { width: 120px;}
+    .pickList_list { width: 115px;}
     #result, #loading { width: 30rem;}
-    .options { font-size: 10px;}
+    .options { font-size: 9.5px;}
 }
