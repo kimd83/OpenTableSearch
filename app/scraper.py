@@ -14,7 +14,7 @@ dayofweek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 id_all = {"Marea": 31159, "Per Se": 2783, "Jean Georges": 3154, 
     "Le Bernardin": 2508, "Daniel": 337, "Eleven Madison Park": 211,
     "Gramercy Tavern": 942, "Sushi Nakazawa-Sushi Bar": 118903, "Betony": 78406,
-    "Carbone": 104293, "Dirty French": 151027, "Upland":151747}
+    "Carbone": 104293, "Dirty French": 151027, "Upland":151747, "Cookshop":4380}
 
 def get(qstring):
     data = ast.literal_eval(qstring.replace('%22','"').replace('%20',' '))
@@ -31,7 +31,6 @@ def get(qstring):
     return json.dumps(tables)
 
 def find_tables(rname, rid, start_date, end_date, start_time, end_time, people):
-    print end_time
     people = str(people)[-1]    
     if start_time == "12PM":
         start_time = "0PM"
@@ -39,7 +38,6 @@ def find_tables(rname, rid, start_date, end_date, start_time, end_time, people):
         end_time = "0PM"
     times = range(int(start_time[:-2]), int(end_time[:-2]))
     times = [str(time + 12) + "%3A30" for time in times]
-    print times
     rname = rname.replace(" ","-")
     start_date = datetime.strptime(start_date, '%m/%d/%Y')
     end_date = datetime.strptime(end_date, '%m/%d/%Y')
