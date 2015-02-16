@@ -9,17 +9,9 @@
         <span class="menu"><b>Restaurant: </b></span>
         <select class="r_dropdown" name="rname">
           <OPTION selected disabled>Pick a restaurant
-          <OPTION>Betony
-          <OPTION>Carbone
-          <OPTION>Daniel
-          <OPTION>Dirty French
-          <OPTION>Eleven Madison Park
-          <OPTION>Gramercy Tavern            
-          <OPTION>Le Bernardin
-          <OPTION>Marea
-          <OPTION>Per Se
-          <OPTION>Sushi Nakazawa-Sushi Bar
-          <OPTION>Upland
+          {%for restaurant in restaurants %}
+          <OPTION> {{restaurant.name}}
+          {% endfor %}  
         </select>
       </div>
     </div>
