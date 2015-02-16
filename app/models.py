@@ -1,24 +1,27 @@
-from app import db
-
-class Restaurant(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    r_name = db.Column(db.String(80), unique=True)
-    r_code = db.Column(db.Integer, unique=True)
+from . import db
 
 class Alert(db.Model):
+    __tablename__ = 'alerts'
     id = db.Column(db.Integer, primary_key=True)
-    r_name = db.Column(db.String(80), ForeignKey('Restaurant.r_name'))
-    start_date = db.Column(db.String(80))
-    end_date = db.Column(db.String(80))
-    start_time = db.Column(db.String(80))
-    end_time = db.Column(db.String(80))
-    people = db.Column(db.String(80))
-    email = db.Column(db.String(80))
-    status = db.Column(db.String(80))
+    rid = db.Column(db.Integer, db.ForeignKey('restaurants.id'))
+    start_date = db.Column(db.String(64))
+    end_date = db.Column(db.String(64))
+    start_time = db.Column(db.String(64))
+    end_time = db.Column(db.String(64))
+    people = db.Column(db.String(64))
+    email = db.Column(db.String(64))
+    status = db.Column(db.String(64))
+
+    def __repr__(self):
+        return '<Alert %r>' % self.email
 
 
+class Restaurant(db.Model):
+    __tablename__ = 'restaurants'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+    opentable_id = db.Column(db.Integer, unique=True)
+    alerts = db.relationship('Alert', backref='restaurant', lazy= "dynamic")
 
-
-
-
-
+    def __repr__(self):
+        return '<Restaurant %r>' % self.name

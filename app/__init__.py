@@ -1,36 +1,28 @@
-from flask import Flask, g
-from contextlib import closing
-import sqlite3
-from scraper import send_alerts
+from flask import Flask
+from flask.ext.bootstrap import Bootstrap
+from flask.ext.mail import Mail
+from flask.ext.moment import Moment
+from flask.ext.sqlalchemy import SQLAlchemy
+from config import config
 
-DATABASE = "./opentable.db"
+bootstrap = Bootstrap()
+mail = Mail()
+moment = Moment()
+db = SQLAlchemy()
 
-app = Flask(__name__)
-from app import views
 
-app.config.from_object(__name__)
+def create_app(config_name):
+    app = Flask(__name__)
+    app.config.from_object(config[config_name])
+    config[config_name].init_app(app)
 
-def connect_db():
-    return sqlite3.connect(app.config['DATABASE'])
+    bootstrap.init_app(app)
+    mail.init_app(app)
+    moment.init_app(app)
+    db.init_app(app)
 
-def init_db():
-    with closing(connect_db()) as db:
-        with app.open_resource('schema.sql', mode='r') as f:
-            db.cursor().executescript(f.read())
-        db.commit()
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
 
-@app.before_request
-def before_request():
-    g.db = connect_db()
-
-@app.teardown_appcontext
-def close_db(error):
-    """Closes the database again at the end of the request."""
-    if hasattr(g, 'sqlite_db'):
-        g.sqlite_db.close()
-
-def send_alerts():
-    with app.app_context():
-        g.db = connect_db()
-        scraper.send_alerts()
+    return app
 

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<a class="menu" href="/help">Help</a><br>
+<a class="menu" href="/opentable">Main</a><br><br>
+<form method=post id = "form-container" class="form-container">
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <span class="menu">
+          <b>Restaurant Name</b>
+        </span><input name="rname">
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-md-3">
+        <span class="menu">
+          <b>Restaurant ID</b>
+        </span><input name="rid">
+        </div>
+      </div>
+    <br>
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+      <button id="submit-btn">Add New</button>
+    </div>
+  </div>
+  <br>
+  <span id="msg"><b>
+  {{msg}}
+  <br>
+  </b>
+  </span>
+</div>
+</form>
+
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="./static/js/jquery-picklist/jquery.ui.widget.js"></script>
+    <script src="./static/js/jquery-picklist/jquery-picklist.js"></script>    
+    <script src="./static/js/script.js"></script>
+{% endblock %}
