@@ -53,6 +53,7 @@ def alerts():
             rid = Restaurant.query.filter_by(name=rname).first()
             alert = Alert(restaurant = rid, start_date = start_date, end_date = end_date, start_time = start_time, end_time = end_time, people = people, email = email, status=status)     
             db.session.add(alert)
+            db.session.commit()
             confirmation = "An email will be sent to " + email + " when your table becomes available!"
             table = "Your Table: " + rname + " from " + start_date + " to " + end_date + " between " + start_time + " and " + end_time + " " + people
             flash(confirmation)
@@ -90,6 +91,7 @@ def add_new():
         rid = request.form['rid']
         restaurant = Restaurant(name=rname, opentable_id = rid)
         db.session.add(restaurant)
+        db.session.commit()
         msg = rname + " has been added to the list."
         flash(msg)
         return redirect(url_for('main.add_new'))
