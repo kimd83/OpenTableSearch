@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<a class="menu" href="/help">Help</a><br>
-<a class="menu" href="/opentable">Main</a><br><br>
+<br><br>
 <form method=post id = "form-container" class="form-container">
 <div class="container-fluid">
     <div class="row">
@@ -26,8 +25,17 @@
     </div>
   </div>
   <br>
-  <span id="msg"><b>
-  {{msg}}
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    <b>
+    {% for message in messages %}
+    {{ message }} <br>
+    {% endfor %}
+  </b>
+    </ul>
+  {% endif %}
+{% endwith %}
   <br>
   </b>
   </span>

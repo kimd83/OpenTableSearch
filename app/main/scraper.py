@@ -5,7 +5,7 @@ import ast
 from datetime import datetime, date, timedelta
 import grequests
 from collections import OrderedDict
-from flask import request, render_template, Response, g
+from flask import request, render_template, Response
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText

@@ -1,10 +1,8 @@
-from flask import request, session, url_for, current_app, render_template, Response, g
+from flask import request, session, url_for, current_app, render_template, Response, redirect, flash
 from .. import db
 from . import scraper
 from ..models import Restaurant, Alert
-from ..email import send_email
 from . import main
-from .forms import NameForm
 import re
 
 
@@ -38,9 +36,8 @@ def help():
 @main.route('/alerts', methods=['GET','POST'])
 def alerts():
     restaurants = Restaurant.query.order_by(Restaurant.name.asc()).all()
-    if request.method == 'GET':
-        return render_template("alerts.html", restaurants = restaurants)
     if request.method == 'POST':
+        session['redirected'] = True
         email = request.form['email']
         try:
             rname = request.form['rname']
@@ -58,11 +55,15 @@ def alerts():
             db.session.add(alert)
             confirmation = "An email will be sent to " + email + " when your table becomes available!"
             table = "Your Table: " + rname + " from " + start_date + " to " + end_date + " between " + start_time + " and " + end_time + " " + people
-            return render_template("alerts.html", restaurants = restaurants, confirmation = confirmation, table = table)
+            flash(confirmation)
+            flash(table)
+            return redirect(url_for('main.alerts'))
         else:
             error = "Please pick a restaurant and/or enter a valid email address"
-        return render_template("alerts.html", restaurants = restaurants, confirmation = error)
+            flash(error)
+            return redirect(url_for('main.alerts'))
 
+    return render_template("alerts.html", restaurants = restaurants)
 
 @main.route('/alerts_active')
 def alerts_active():
@@ -84,15 +85,15 @@ def alerts_all():
 
 @main.route('/add_new', methods=['GET','POST'])
 def add_new():
-    if request.method == 'GET':
-        return render_template("add_new.html")
     if request.method == 'POST':
         rname = request.form['rname']
         rid = request.form['rid']
         restaurant = Restaurant(name=rname, opentable_id = rid)
         db.session.add(restaurant)
         msg = rname + " has been added to the list."
-        return render_template("add_new.html", msg = msg)
+        flash(msg)
+        return redirect(url_for('main.add_new'))
+    return render_template("add_new.html")
 
 
 def valid_email(email):

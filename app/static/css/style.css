@@ -12,13 +12,12 @@ h1 { color: #fff; }
 
 .menu { color: #fff; }
 
-#confirmation { color: #ff0000; }
-
 .options {
     background-color: #fff;
     float: left;
 }
-        
+
+.flashes { color: #ff0000; }     
 
 #start_date, #end_date {
 	width: 6em;
