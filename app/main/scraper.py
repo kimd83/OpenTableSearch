@@ -89,7 +89,7 @@ def send_alerts():
                     server = smtplib.SMTP('smtp.gmail.com', 587)
                     server.ehlo()
                     server.starttls()
-                    server.login('opentablesearch@gmail.com','searchtable')
+                    server.login('opentablesearch@gmail.com','tablesearch')
                     server.sendmail(FROM, TO, message)
                     server.close()
                     alert.status = 'sent'
