@@ -1,7 +1,9 @@
 import os
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config(object):
     DEBUG = False
+    # SSL_DISABLE=False
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = 'password'
@@ -20,3 +22,5 @@ class DevelopmentConfig(Config):
 config = {
     'default': DevelopmentConfig
 }
+
+print(os.environ['DATABASE_URL'])

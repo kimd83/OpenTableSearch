@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# from lxml import html
+from lxml import html
 import json
 import ast
 from datetime import datetime, date, timedelta
@@ -15,7 +15,7 @@ from .. import db
 dayofweek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
 def get(qstring):
-    data = ast.literal_eval(qstring.replace('%22','"').replace('%20',' '))
+    data = ast.literal_eval(qstring.decode("utf-8").replace('%22','"').replace('%20',' '))
     tables = {}
     start_date = data["start_date"]
     end_date = data["end_date"]
