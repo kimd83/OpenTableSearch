@@ -81,6 +81,7 @@ def send_alerts():
                 opentable_id = Restaurant.query.filter_by(id = rid).first().opentable_id
                 table = find_tables(rname, opentable_id, alert.start_date, alert.end_date, alert.start_time, alert.end_time, alert.people)
                 if table:
+                    alert.status = 'sent'
                     SUBJECT = 'We found a table for you!'
                     FROM = 'opentablesearch@gmail.com'
                     TO = [alert.email]
@@ -92,7 +93,7 @@ def send_alerts():
                     server.login('opentablesearch@gmail.com','tablesearch')
                     server.sendmail(FROM, TO, message)
                     server.close()
-                    alert.status = 'sent'
+    db.session.commit()
     return 0
 
 
