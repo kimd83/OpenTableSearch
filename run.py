@@ -6,11 +6,6 @@ from flask.ext.migrate import Migrate, MigrateCommand
 import os 
 
 app = create_app()
-# app.config.update(
-#     DEBUG=True,
-#     SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/findtable'
-#     )
-
 
 manager = Manager(app)
 migrate = Migrate(app, db)
