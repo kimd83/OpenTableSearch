@@ -1,9 +1,20 @@
 from flask import Flask 
-app = Flask(__name__)
+#!/usr/bin/env python
+import os
+from app import app, db
+from app.models import Alert, Restaurant
+from flask.ext.script import Manager, Shell
+from flask.ext.migrate import Migrate, MigrateCommand
+from config import config
 
-@app.route('/') 
-def index():
-    return '<h1>Hello World!</h1>' 
+manager = Manager(app)
+migrate = Migrate(app, db)
+
+def make_shell_context():
+    return dict(app=app, db=db, Alert=Alert, Restaurant=Restaurant)
+manager.add_command("shell", Shell(make_context=make_shell_context))
+manager.add_command('db', MigrateCommand)
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    manager.run()

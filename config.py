@@ -1,13 +1,12 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-class Config(object):
-    DEBUG = False
-    # SSL_DISABLE=False
+class Config:
+    DEBUG = True
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = 'password'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
    
     @staticmethod
@@ -16,11 +15,8 @@ class Config(object):
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'postgresql://localhost/findtable'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'postgresql://localhost/findtable'
 
 config = {
     'default': DevelopmentConfig
 }
-
-print(os.environ['DATABASE_URL'])
